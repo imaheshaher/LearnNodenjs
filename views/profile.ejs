@@ -1,0 +1,9 @@
+<%- include("../common/nav") -%>
+    this is ejs profile
+
+    <h2>Welcome <%= data.name %></h2>
+    <P><%= text %></P>
+    <%= msg %>
+    <% list.forEach(function(i) {%>
+        <li><%= i %> </li>
+    <% }) %>
