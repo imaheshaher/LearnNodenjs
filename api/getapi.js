@@ -17,7 +17,7 @@ app.get('/users', function (req, res) {
     User.find().then((data) => {
         res.json(data)
     })
-})
+}) 
 app.post('/user', jsonparaser, function (req, res) {
     const data = new User({
         _id: mongoose.Types.ObjectId(),

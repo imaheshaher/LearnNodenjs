@@ -5,6 +5,8 @@ let userSchema = mongoose.Schema({
     name:String,
     email:String,
     address:String,
+    about:String
 })
 
 module.exports=mongoose.model('users',userSchema)
+

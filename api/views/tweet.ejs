@@ -1,0 +1,13 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div>
+<h3>Text : <%=data.text %></h3>
+<h4>Author : <%= data.author %></h4>
+<br>
+</div>
+<button id="something">click</button>
+<script>
+$('#something').click(function() {
+    location.reload();
+});
+</script>

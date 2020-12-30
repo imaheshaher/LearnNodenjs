@@ -1,3 +1,4 @@
+const http = require("https")
 const express = require("express")
 const bodyParser = require("body-parser");
 const { urlencoded } = require("body-parser");
@@ -13,6 +14,7 @@ app.get("/profile/:name",(req,res) => {
     res.render('profile',{data:req.params})
 })
 
+let tweets =[]
 app.get("/home",(req,res) => {
     res.send("<h2>Home</h2>")
 })
@@ -26,4 +28,33 @@ app.post('/login',encoder,(req,res) => {
     console.warn(req.body.email)
     res.send("You Are Login ")
 })
-app.listen(5000)
+app.get("/gettweet",(req,res) => {
+    res.send(tweets)
+})
+app.get("/tweet",(req,resp) => {
+    let data =''
+http.get("https://type.fit/api/quotes",(res) => {
+    
+
+    res.on('data',(chunk) => {
+        data +=chunk
+    })
+    res.on('end', () => {
+        var d=JSON.parse(data)
+        tweets=d
+        num=Math.random()*(100-1+1)+1
+        n=Math.floor(num)
+        console.log(n)
+        console.log(d[n]);
+        resp.render("tweet",{data:d[n]})
+      });
+})
+// let a=JSON.parse(data)
+// console.warn(a)
+//     resp.render("tweet")
+})
+
+
+app.listen(3000)
+
+
